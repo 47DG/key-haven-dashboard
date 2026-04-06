@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key Haven Estates Q1 2026 Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .summary {
+            background: #f8f9fa;
+            padding: 25px;
+            border-bottom: 3px solid #e9ecef;
+        }
+        
+        .summary h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .summary-text {
+            font-size: 1.1em;
+            color: #495057;
+            line-height: 1.6;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 30px;
+        }
+        
+        .metric-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-left: 4px solid #3498db;
+        }
+        
+        .metric-card.positive { border-left-color: #27ae60; }
+        .metric-card.negative { border-left-color: #e74c3c; }
+        .metric-card.neutral { border-left-color: #f39c12; }
+        
+        .metric-value {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            color: #7f8c8d;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+        
+        .variance {
+            font-size: 0.9em;
+            margin-top: 5px;
+            font-weight: 600;
+        }
+        
+        .variance.positive { color: #27ae60; }
+        .variance.negative { color: #e74c3c; }
+        
+        .performance-table {
+            margin: 30px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        .table-header {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .status-icon {
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+        
+        .highlights {
+            margin: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .highlight-section {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        .highlight-section h3 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .highlight-section.wins {
+            border-left: 4px solid #27ae60;
+        }
+        
+        .highlight-section.opportunities {
+            border-left: 4px solid #f39c12;
+        }
+        
+        .highlight-list {
+            list-style: none;
+        }
+        
+        .highlight-list li {
+            padding: 8px 0;
+            color: #495057;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .highlight-list li::before {
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .wins .highlight-list li::before {
+            content: "✅";
+        }
+        
+        .opportunities .highlight-list li::before {
+            content: "⚠️";
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #7f8c8d;
+            background: #f8f9fa;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        @media (max-width: 768px) {
+            .highlights {
+                grid-template-columns: 1fr;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏖️ Key Haven Estates</h1>
+            <div class="subtitle">Q1 2026 Performance Dashboard</div>
+        </div>
+        
+        <div class="summary">
+            <h2>🎯 Executive Summary</h2>
+            <div class="summary-text">
+                <strong>Revenue:</strong> $3.61M vs $3.63M budget (-0.5%) | 
+                <strong>Occupancy:</strong> 71.1% vs 67.0% budget (+4.1pts) | 
+                <strong>ADR:</strong> $2,211 vs $2,310 budget (-4.3%)
+            </div>
+        </div>
+        
+        <div class="metrics-grid">
+            <div class="metric-card neutral">
+                <div class="metric-value">$3.61M</div>
+                <div class="metric-label">Q1 Revenue</div>
+                <div class="variance neutral">-0.5% vs Budget</div>
+            </div>
+            
+            <div class="metric-card positive">
+                <div class="metric-value">71.1%</div>
+                <div class="metric-label">Occupancy</div>
+                <div class="variance positive">+4.1pts vs Budget</div>
+            </div>
+            
+            <div class="metric-card negative">
+                <div class="metric-value">$2,211</div>
+                <div class="metric-label">ADR per Key</div>
+                <div class="variance negative">-4.3% vs Budget</div>
+            </div>
+            
+            <div class="metric-card positive">
+                <div class="metric-value">+92%</div>
+                <div class="metric-label">YoY Growth</div>
+                <div class="variance positive">vs Q1 2025</div>
+            </div>
+        </div>
+        
+        <div class="performance-table">
+            <div class="table-header">📊 Monthly Performance Matrix</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>Revenue</th>
+                        <th>vs Budget</th>
+                        <th>Occupancy</th>
+                        <th>vs Budget</th>
+                        <th>ADR/Key</th>
+                        <th>vs Budget</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>January</strong></td>
+                        <td>$1.09M</td>
+                        <td><span class="status-icon">🟢</span>+9.1%</td>
+                        <td>63.5%</td>
+                        <td><span class="status-icon">🟢</span>+4.7pts</td>
+                        <td>$2,164</td>
+                        <td><span class="status-icon">🟢</span>+2.6%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>February</strong></td>
+                        <td>$1.19M</td>
+                        <td><span class="status-icon">🔴</span>-5.8%</td>
+                        <td>73.9%</td>
+                        <td><span class="status-icon">🟢</span>+3.5pts</td>
+                        <td>$2,253</td>
+                        <td><span class="status-icon">🔴</span>-8.5%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>March</strong></td>
+                        <td>$1.33M</td>
+                        <td><span class="status-icon">🔴</span>-2.7%</td>
+                        <td>76.2%</td>
+                        <td><span class="status-icon">🟢</span>+4.3pts</td>
+                        <td>$2,214</td>
+                        <td><span class="status-icon">🔴</span>-6.1%</td>
+                    </tr>
+                    <tr style="background: #f8f9fa; font-weight: bold;">
+                        <td><strong>Q1 Total</strong></td>
+                        <td>$3.61M</td>
+                        <td><span class="status-icon">🟡</span>-0.5%</td>
+                        <td>71.1%</td>
+                        <td><span class="status-icon">🟢</span>+4.1pts</td>
+                        <td>$2,211</td>
+                        <td><span class="status-icon">🔴</span>-4.3%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="highlights">
+            <div class="highlight-section wins">
+                <h3>✅ What's Working</h3>
+                <ul class="highlight-list">
+                    <li><strong>Volume Excellence:</strong> Beat occupancy budget every single month</li>
+                    <li><strong>January Triple Win:</strong> Revenue, occupancy, and ADR all exceeded targets</li>
+                    <li><strong>YoY Growth Monster:</strong> 92% revenue growth vs same time last year</li>
+                    <li><strong>Momentum Building:</strong> March highest revenue month despite rate challenges</li>
+                </ul>
+            </div>
+            
+            <div class="highlight-section opportunities">
+                <h3>⚠️ Opportunity Areas</h3>
+                <ul class="highlight-list">
+                    <li><strong>Rate Optimization:</strong> $99 average ADR shortfall vs budget across Q1</li>
+                    <li><strong>Feb/Mar Pricing:</strong> 6-8% rate misses in peak months</li>
+                    <li><strong>RevPAR Balance:</strong> Trading rate for volume - strategy needs validation</li>
+                    <li><strong>Market Position:</strong> Competitive rate analysis needed for Q2</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <strong>Overall Grade: B+</strong><br>
+            Strong volume execution with rate optimization opportunity identified<br>
+            <em>Dashboard generated: April 6, 2026 | Source: Brightwild Analytics Mart</em>
+        </div>
+    </div>
+</body>
+</html>

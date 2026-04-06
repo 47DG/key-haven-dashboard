@@ -1,0 +1,13 @@
+{
+  "name": "key-haven-dashboard",
+  "version": "1.0.0",
+  "description": "Key Haven Estates Q1 2026 Performance Dashboard",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve .",
+    "build": "echo 'Static site - no build needed'"
+  },
+  "keywords": ["dashboard", "analytics", "brightwild", "key-haven"],
+  "author": "Brightwild Analytics",
+  "license": "MIT"
+}

@@ -1,0 +1,13 @@
+{
+  "functions": {
+    "index.html": {
+      "runtime": "static"
+    }
+  },
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/index.html"
+    }
+  ]
+}
