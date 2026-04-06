@@ -141,9 +141,19 @@
             background: #f8f9fa;
         }
         
-        .status-icon {
-            font-size: 1.2em;
-            margin-right: 5px;
+        .status-positive {
+            color: #27ae60;
+            font-weight: 600;
+        }
+        
+        .status-negative {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+        
+        .status-neutral {
+            color: #f39c12;
+            font-weight: 600;
         }
         
         .highlights {
@@ -191,11 +201,13 @@
         }
         
         .wins .highlight-list li::before {
-            content: "✅";
+            content: "✓";
+            color: #27ae60;
         }
         
         .opportunities .highlight-list li::before {
-            content: "⚠️";
+            content: "•";
+            color: #f39c12;
         }
         
         .footer {
@@ -224,12 +236,12 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🏖️ Key Haven Estates</h1>
+            <h1>Key Haven Estates</h1>
             <div class="subtitle">Q1 2026 Performance Dashboard</div>
         </div>
         
         <div class="summary">
-            <h2>🎯 Executive Summary</h2>
+            <h2>Executive Summary</h2>
             <div class="summary-text">
                 <strong>Revenue:</strong> $3.61M vs $3.63M budget (-0.5%) | 
                 <strong>Occupancy:</strong> 71.1% vs 67.0% budget (+4.1pts) | 
@@ -264,7 +276,7 @@
         </div>
         
         <div class="performance-table">
-            <div class="table-header">📊 Monthly Performance Matrix</div>
+            <div class="table-header">Monthly Performance Matrix</div>
             <table>
                 <thead>
                     <tr>
@@ -281,38 +293,88 @@
                     <tr>
                         <td><strong>January</strong></td>
                         <td>$1.09M</td>
-                        <td><span class="status-icon">🟢</span>+9.1%</td>
+                        <td class="status-positive">+9.1%</td>
                         <td>63.5%</td>
-                        <td><span class="status-icon">🟢</span>+4.7pts</td>
+                        <td class="status-positive">+4.7pts</td>
                         <td>$2,164</td>
-                        <td><span class="status-icon">🟢</span>+2.6%</td>
+                        <td class="status-positive">+2.6%</td>
                     </tr>
                     <tr>
                         <td><strong>February</strong></td>
                         <td>$1.19M</td>
-                        <td><span class="status-icon">🔴</span>-5.8%</td>
+                        <td class="status-negative">-5.8%</td>
                         <td>73.9%</td>
-                        <td><span class="status-icon">🟢</span>+3.5pts</td>
+                        <td class="status-positive">+3.5pts</td>
                         <td>$2,253</td>
-                        <td><span class="status-icon">🔴</span>-8.5%</td>
+                        <td class="status-negative">-8.5%</td>
                     </tr>
                     <tr>
                         <td><strong>March</strong></td>
                         <td>$1.33M</td>
-                        <td><span class="status-icon">🔴</span>-2.7%</td>
+                        <td class="status-negative">-2.7%</td>
                         <td>76.2%</td>
-                        <td><span class="status-icon">🟢</span>+4.3pts</td>
+                        <td class="status-positive">+4.3pts</td>
                         <td>$2,214</td>
-                        <td><span class="status-icon">🔴</span>-6.1%</td>
+                        <td class="status-negative">-6.1%</td>
                     </tr>
                     <tr style="background: #f8f9fa; font-weight: bold;">
                         <td><strong>Q1 Total</strong></td>
                         <td>$3.61M</td>
-                        <td><span class="status-icon">🟡</span>-0.5%</td>
+                        <td class="status-neutral">-0.5%</td>
                         <td>71.1%</td>
-                        <td><span class="status-icon">🟢</span>+4.1pts</td>
+                        <td class="status-positive">+4.1pts</td>
                         <td>$2,211</td>
-                        <td><span class="status-icon">🔴</span>-4.3%</td>
+                        <td class="status-negative">-4.3%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="performance-table">
+            <div class="table-header">Year-over-Year Comparison vs STLY</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>CY (2026)</th>
+                        <th>STLY (2025)</th>
+                        <th>Revenue Growth</th>
+                        <th>Occupancy Change</th>
+                        <th>ADR Change</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>January</strong></td>
+                        <td>$1.09M</td>
+                        <td>$0.59M</td>
+                        <td class="status-positive">+84.3%</td>
+                        <td class="status-positive">+5.4pts</td>
+                        <td class="status-positive">+10.0%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>February</strong></td>
+                        <td>$1.19M</td>
+                        <td>$0.48M</td>
+                        <td class="status-positive">+146.0%</td>
+                        <td class="status-positive">+13.3pts</td>
+                        <td class="status-positive">+36.1%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>March</strong></td>
+                        <td>$1.33M</td>
+                        <td>$0.81M</td>
+                        <td class="status-positive">+64.5%</td>
+                        <td class="status-positive">+5.5pts</td>
+                        <td class="status-positive">+5.1%</td>
+                    </tr>
+                    <tr style="background: #f8f9fa; font-weight: bold;">
+                        <td><strong>Q1 Total</strong></td>
+                        <td>$3.61M</td>
+                        <td>$1.88M</td>
+                        <td class="status-positive">+91.7%</td>
+                        <td class="status-positive">+8.7pts</td>
+                        <td class="status-positive">+15.5%</td>
                     </tr>
                 </tbody>
             </table>
@@ -320,7 +382,7 @@
         
         <div class="highlights">
             <div class="highlight-section wins">
-                <h3>✅ What's Working</h3>
+                <h3>What's Working</h3>
                 <ul class="highlight-list">
                     <li><strong>Volume Excellence:</strong> Beat occupancy budget every single month</li>
                     <li><strong>January Triple Win:</strong> Revenue, occupancy, and ADR all exceeded targets</li>
@@ -330,7 +392,7 @@
             </div>
             
             <div class="highlight-section opportunities">
-                <h3>⚠️ Opportunity Areas</h3>
+                <h3>Opportunity Areas</h3>
                 <ul class="highlight-list">
                     <li><strong>Rate Optimization:</strong> $99 average ADR shortfall vs budget across Q1</li>
                     <li><strong>Feb/Mar Pricing:</strong> 6-8% rate misses in peak months</li>
